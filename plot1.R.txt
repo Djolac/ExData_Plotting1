@@ -1,0 +1,13 @@
+d<-read.table("household_power_consumption.txt", sep=';', header=TRUE)
+
+library(dplyr)
+
+d<-tbl_df(d)
+
+data<-filter(d, Date=='2/2/2007' | Date=='1/2/2007')
+
+png("plot1.png", width=480, height=480)
+
+with(data, hist(as.numeric(as.character(Global_active_power)), col="red", breaks=12, xlab='Global Active Power (kilowatts)', main='Global Active Power'))
+
+dev.off()
